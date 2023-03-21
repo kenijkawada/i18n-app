@@ -1,10 +1,13 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import LocaleSwitcher from '../components/locale-switcher'
+import Link from "next/link";
+import { useRouter } from "next/router";
+import LocaleSwitcher from "../components/locale-switcher";
+import useLocale from "../hooks/useLocal";
 
 export default function IndexPage() {
-  const router = useRouter()
-  const { locale, locales, defaultLocale } = router
+  const router = useRouter();
+  const { locale, locales, defaultLocale } = router;
+
+  const { t } = useLocale();
 
   return (
     <div>
@@ -23,6 +26,8 @@ export default function IndexPage() {
 
       <Link href="/gssp">To getServerSideProps page</Link>
       <br />
+
+      <p>{t.hello}</p>
     </div>
-  )
+  );
 }
